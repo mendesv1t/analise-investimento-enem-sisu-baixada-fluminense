@@ -1,0 +1,11 @@
+raw_data/
+.DS_Store
+old/
+
+.venv/
+
+textos/
+
+artigo/
+
+__pycache__/

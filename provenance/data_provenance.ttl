@@ -1,0 +1,69 @@
+@prefix ex: <http://example.org/education-provenance#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:dashboard_app a prov:Entity ;
+    rdfs:label "Dashboard Interativo (Streamlit App)"^^xsd:string ;
+    prov:wasDerivedFrom ex:curated_enem,
+        ex:curated_fundeb,
+        ex:curated_sisu,
+        ex:model_outputs ;
+    prov:wasGeneratedBy ex:act_dashboard_run .
+
+ex:act_dashboard_run a prov:Activity ;
+    rdfs:label "Renderização visual e cálculo de KPIs dinâmicos"^^xsd:string ;
+    prov:used ex:curated_enem,
+        ex:curated_fundeb,
+        ex:curated_sisu,
+        ex:model_outputs .
+
+ex:act_ingest_enem a prov:Activity ;
+    rdfs:label "Filtragem de treineiros/presença e filtro geográfico"^^xsd:string ;
+    prov:used ex:raw_enem .
+
+ex:act_ingest_fundeb a prov:Activity ;
+    rdfs:label "Deflacionamento pelo IPCA e agrupamento por município e ano"^^xsd:string ;
+    prov:used ex:raw_fundeb .
+
+ex:act_ingest_sisu a prov:Activity ;
+    rdfs:label "Filtragem de município de origem"^^xsd:string ;
+    prov:used ex:raw_sisu .
+
+ex:act_model_training a prov:Activity ;
+    rdfs:label "Treinamento do Random Forest Regressor e Clusterização K-Means"^^xsd:string ;
+    prov:used ex:curated_enem,
+        ex:curated_fundeb,
+        ex:curated_sisu .
+
+ex:model_outputs a prov:Entity ;
+    rdfs:label "Model Outputs (rf_feature_importance.csv, municipios_clusters.csv)"^^xsd:string ;
+    prov:wasDerivedFrom ex:curated_enem,
+        ex:curated_fundeb,
+        ex:curated_sisu ;
+    prov:wasGeneratedBy ex:act_model_training .
+
+ex:raw_enem a prov:Entity ;
+    rdfs:label "Microdados do ENEM (2013-2022) - INEP"^^xsd:string .
+
+ex:raw_fundeb a prov:Entity ;
+    rdfs:label "Relatórios do FUNDEB (2011-2024) - FNDE"^^xsd:string .
+
+ex:raw_sisu a prov:Entity ;
+    rdfs:label "Microdados do SISU (2014-2023) - MEC"^^xsd:string .
+
+ex:curated_enem a prov:Entity ;
+    rdfs:label "ENEM Curated (dataset_enem_microdados_baixada.parquet)"^^xsd:string ;
+    prov:wasDerivedFrom ex:raw_enem ;
+    prov:wasGeneratedBy ex:act_ingest_enem .
+
+ex:curated_fundeb a prov:Entity ;
+    rdfs:label "FUNDEB Curated (dataset_fundeb_municipio_ano.parquet)"^^xsd:string ;
+    prov:wasDerivedFrom ex:raw_fundeb ;
+    prov:wasGeneratedBy ex:act_ingest_fundeb .
+
+ex:curated_sisu a prov:Entity ;
+    rdfs:label "SISU Curated (dataset_sisu_municipio_ano.parquet)"^^xsd:string ;
+    prov:wasDerivedFrom ex:raw_sisu ;
+    prov:wasGeneratedBy ex:act_ingest_sisu .
+

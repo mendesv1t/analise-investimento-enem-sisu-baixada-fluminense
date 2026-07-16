@@ -1,0 +1,9 @@
+Teste,Estatística,p-valor,Significante (p < 0.05)
+ANOVA (Renda x Nota ENEM),972.773,< 0.001,True
+Kruskal-Wallis (Renda x Nota ENEM),12167.312,< 0.001,True
+ANOVA (Tipo Escola x Nota ENEM),3690.315,< 0.001,True
+Kruskal-Wallis (Tipo Escola x Nota ENEM),9913.193,< 0.001,True
+ANOVA (Município x Nota ENEM),251.119,< 0.001,True
+Kruskal-Wallis (Município x Nota ENEM),2543.583,< 0.001,True
+Pearson (FUNDEB x SISU),0.093,0.7990,False
+Spearman (FUNDEB x SISU),0.127,0.7261,False

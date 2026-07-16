@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='ASCII'?>
+<prov:document xmlns:ex="http://example.org/education-provenance#" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <prov:entity prov:id="ex:raw_enem">
+    <prov:label>Microdados do ENEM (2013-2022) - INEP</prov:label>
+  </prov:entity>
+  <prov:entity prov:id="ex:raw_fundeb">
+    <prov:label>Relat&#243;rios do FUNDEB (2011-2024) - FNDE</prov:label>
+  </prov:entity>
+  <prov:entity prov:id="ex:raw_sisu">
+    <prov:label>Microdados do SISU (2014-2023) - MEC</prov:label>
+  </prov:entity>
+  <prov:entity prov:id="ex:curated_enem">
+    <prov:label>ENEM Curated (dataset_enem_microdados_baixada.parquet)</prov:label>
+  </prov:entity>
+  <prov:entity prov:id="ex:curated_fundeb">
+    <prov:label>FUNDEB Curated (dataset_fundeb_municipio_ano.parquet)</prov:label>
+  </prov:entity>
+  <prov:entity prov:id="ex:curated_sisu">
+    <prov:label>SISU Curated (dataset_sisu_municipio_ano.parquet)</prov:label>
+  </prov:entity>
+  <prov:entity prov:id="ex:model_outputs">
+    <prov:label>Model Outputs (rf_feature_importance.csv, municipios_clusters.csv)</prov:label>
+  </prov:entity>
+  <prov:entity prov:id="ex:dashboard_app">
+    <prov:label>Dashboard Interativo (Streamlit App)</prov:label>
+  </prov:entity>
+  <prov:activity prov:id="ex:act_ingest_enem">
+    <prov:label>Filtragem de treineiros/presen&#231;a e filtro geogr&#225;fico</prov:label>
+  </prov:activity>
+  <prov:activity prov:id="ex:act_ingest_fundeb">
+    <prov:label>Deflacionamento pelo IPCA e agrupamento por munic&#237;pio e ano</prov:label>
+  </prov:activity>
+  <prov:activity prov:id="ex:act_ingest_sisu">
+    <prov:label>Filtragem de munic&#237;pio de origem</prov:label>
+  </prov:activity>
+  <prov:activity prov:id="ex:act_model_training">
+    <prov:label>Treinamento do Random Forest Regressor e Clusteriza&#231;&#227;o K-Means</prov:label>
+  </prov:activity>
+  <prov:activity prov:id="ex:act_dashboard_run">
+    <prov:label>Renderiza&#231;&#227;o visual e c&#225;lculo de KPIs din&#226;micos</prov:label>
+  </prov:activity>
+  <prov:wasGeneratedBy>
+    <prov:entity prov:ref="ex:curated_enem"/>
+    <prov:activity prov:ref="ex:act_ingest_enem"/>
+  </prov:wasGeneratedBy>
+  <prov:used>
+    <prov:activity prov:ref="ex:act_ingest_enem"/>
+    <prov:entity prov:ref="ex:raw_enem"/>
+  </prov:used>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="ex:curated_enem"/>
+    <prov:usedEntity prov:ref="ex:raw_enem"/>
+  </prov:wasDerivedFrom>
+  <prov:wasGeneratedBy>
+    <prov:entity prov:ref="ex:curated_fundeb"/>
+    <prov:activity prov:ref="ex:act_ingest_fundeb"/>
+  </prov:wasGeneratedBy>
+  <prov:used>
+    <prov:activity prov:ref="ex:act_ingest_fundeb"/>
+    <prov:entity prov:ref="ex:raw_fundeb"/>
+  </prov:used>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="ex:curated_fundeb"/>
+    <prov:usedEntity prov:ref="ex:raw_fundeb"/>
+  </prov:wasDerivedFrom>
+  <prov:wasGeneratedBy>
+    <prov:entity prov:ref="ex:curated_sisu"/>
+    <prov:activity prov:ref="ex:act_ingest_sisu"/>
+  </prov:wasGeneratedBy>
+  <prov:used>
+    <prov:activity prov:ref="ex:act_ingest_sisu"/>
+    <prov:entity prov:ref="ex:raw_sisu"/>
+  </prov:used>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="ex:curated_sisu"/>
+    <prov:usedEntity prov:ref="ex:raw_sisu"/>
+  </prov:wasDerivedFrom>
+  <prov:wasGeneratedBy>
+    <prov:entity prov:ref="ex:model_outputs"/>
+    <prov:activity prov:ref="ex:act_model_training"/>
+  </prov:wasGeneratedBy>
+  <prov:used>
+    <prov:activity prov:ref="ex:act_model_training"/>
+    <prov:entity prov:ref="ex:curated_enem"/>
+  </prov:used>
+  <prov:used>
+    <prov:activity prov:ref="ex:act_model_training"/>
+    <prov:entity prov:ref="ex:curated_fundeb"/>
+  </prov:used>
+  <prov:used>
+    <prov:activity prov:ref="ex:act_model_training"/>
+    <prov:entity prov:ref="ex:curated_sisu"/>
+  </prov:used>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="ex:model_outputs"/>
+    <prov:usedEntity prov:ref="ex:curated_enem"/>
+  </prov:wasDerivedFrom>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="ex:model_outputs"/>
+    <prov:usedEntity prov:ref="ex:curated_fundeb"/>
+  </prov:wasDerivedFrom>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="ex:model_outputs"/>
+    <prov:usedEntity prov:ref="ex:curated_sisu"/>
+  </prov:wasDerivedFrom>
+  <prov:wasGeneratedBy>
+    <prov:entity prov:ref="ex:dashboard_app"/>
+    <prov:activity prov:ref="ex:act_dashboard_run"/>
+  </prov:wasGeneratedBy>
+  <prov:used>
+    <prov:activity prov:ref="ex:act_dashboard_run"/>
+    <prov:entity prov:ref="ex:curated_enem"/>
+  </prov:used>
+  <prov:used>
+    <prov:activity prov:ref="ex:act_dashboard_run"/>
+    <prov:entity prov:ref="ex:curated_fundeb"/>
+  </prov:used>
+  <prov:used>
+    <prov:activity prov:ref="ex:act_dashboard_run"/>
+    <prov:entity prov:ref="ex:curated_sisu"/>
+  </prov:used>
+  <prov:used>
+    <prov:activity prov:ref="ex:act_dashboard_run"/>
+    <prov:entity prov:ref="ex:model_outputs"/>
+  </prov:used>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="ex:dashboard_app"/>
+    <prov:usedEntity prov:ref="ex:curated_enem"/>
+  </prov:wasDerivedFrom>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="ex:dashboard_app"/>
+    <prov:usedEntity prov:ref="ex:curated_fundeb"/>
+  </prov:wasDerivedFrom>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="ex:dashboard_app"/>
+    <prov:usedEntity prov:ref="ex:curated_sisu"/>
+  </prov:wasDerivedFrom>
+  <prov:wasDerivedFrom>
+    <prov:generatedEntity prov:ref="ex:dashboard_app"/>
+    <prov:usedEntity prov:ref="ex:model_outputs"/>
+  </prov:wasDerivedFrom>
+</prov:document>
