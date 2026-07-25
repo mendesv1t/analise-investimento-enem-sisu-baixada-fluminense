@@ -1,5 +1,21 @@
 # Análise ENEM, SISU e FUNDEB na Baixada Fluminense
 
+- [Autores e Orientação](#autores-e-orientação)
+- [Resumo](#resumo)
+- [Como Executar o Dashboard](#como-executar-o-dashboard)
+- [Metodologia e Dados](#metodologia-e-dados)
+- [Organização do Repositório](#organização-do-repositório)
+- [Citação](#citação)
+- [Licença](#licença)
+- [Uso de IA Generativa](#uso-de-ia-generativa)
+
+## Autores e Orientação
+
+- **Autores:** Vitória Chaves, Alekssander Santos
+- **Orientador:** Sergio Serra
+
+## Resumo
+
 Este repositório contém a infraestrutura de dados, análises exploratórias, modelagem de machine learning e o dashboard interativo do projeto que investiga a relação entre repasses do FUNDEB, proficiência no ENEM e acesso ao ensino superior (SISU) nos 13 municípios da Baixada Fluminense (2013-2023).
 
 ## Como Executar o Dashboard
@@ -68,3 +84,26 @@ Estes scripts consomem os dados limpos (pasta `curated/`) e geram os insights es
 - `raw_data/`: (Não versionado) Arquivos brutos originais extraídos dos órgãos federais.
 - `curated/`: (Não versionado) Arquivos pré-processados salvos em `.parquet`.
 - `output/`: Outputs gerados pelos modelos (gráficos, tabelas comparativas).
+- `provenance/`: Grafo e metadados de proveniência dos dados (W3C PROV).
+
+## Citação
+
+Se este repositório for útil para sua pesquisa ou trabalho, por favor cite-o da seguinte forma:
+
+```bibtex
+@misc{chaves2026enemsisufundeb,
+  author       = {Chaves, Vitória and Santos, Alekssander},
+  title        = {Análise ENEM, SISU e FUNDEB na Baixada Fluminense},
+  year         = {2026},
+  howpublished = {\url{https://github.com/mendesv1t/analise-investimento-enem-sisu-baixada-fluminense}},
+  note         = {Orientador: Sergio Serra}
+}
+```
+
+## Licença
+
+Este projeto está licenciado sob os termos da [Licença MIT](LICENSE).
+
+## Uso de IA Generativa
+
+Ferramentas de Inteligência Artificial Generativa (Claude/Claude Code, Anthropic) foram utilizadas como apoio na escrita, revisão e depuração de trechos de código dos scripts de ETL, modelagem e do dashboard (pastas [`scripts/`](scripts/) e [`dashboard/`](dashboard/)). A definição da metodologia, a escolha das fontes de dados, a interpretação dos resultados e as conclusões do trabalho são de responsabilidade dos autores.
